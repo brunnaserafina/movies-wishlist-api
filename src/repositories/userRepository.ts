@@ -34,4 +34,10 @@ async function insertSession({ user_id, token }: NewSession): Promise<number> {
   ).rowCount;
 }
 
-export { findUser, insertUser, insertSession };
+async function findSession(token: string): Promise<NewSession> {
+  return (
+    await connection.query(`SELECT * FROM sessions WHERE token=$1;`, [token])
+  )?.rows[0];
+}
+
+export { findUser, insertUser, insertSession, findSession };
