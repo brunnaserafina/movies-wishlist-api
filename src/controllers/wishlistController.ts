@@ -29,4 +29,24 @@ async function insertWishList(req: Request, res: Response) {
   }
 }
 
-export { insertWishList };
+async function getWishList(req: Request, res: Response) {
+  const user_id: number = Number(res.locals.idUser);
+
+  try {
+    const movieWishlist: Movie[] | undefined =
+      await wishlistRepository.getMoviesToWishList(user_id);
+
+    if (!movieWishlist) {
+      return res
+        .status(400)
+        .send({ message: "Não foi possível carregar a lista de filmes!" });
+    }
+
+    return res.status(200).send(movieWishlist);
+  } catch (err) {
+    console.error(err);
+    return res.sendStatus(500);
+  }
+}
+
+export { insertWishList, getWishList };
