@@ -7,6 +7,6 @@ var connection = new Pool({
     port: 5432,
     user: "postgres",
     password: process.env.PASSWORD,
-    database: "movieswishlist"
+    database: "moviesWishlist"
 });
 export { connection };
