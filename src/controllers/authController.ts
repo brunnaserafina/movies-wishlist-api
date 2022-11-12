@@ -4,6 +4,7 @@ import { v4 as uuid } from "uuid";
 
 import { UserEntity, NewUser, User } from "../protocols/User.js";
 import * as userRepository from "../repositories/userRepository.js";
+import * as sessionRepository from "../repositories/sessionRepository.js";
 
 async function signUp(req: Request, res: Response) {
   let { username, email, password } = req.body as NewUser;
@@ -53,7 +54,7 @@ async function signIn(req: Request, res: Response) {
     const token: string = uuid();
     const user_id: number = user.id;
 
-    const insertedSession: number = await userRepository.insertSession({
+    const insertedSession: number = await sessionRepository.insertSession({
       user_id,
       token,
     });

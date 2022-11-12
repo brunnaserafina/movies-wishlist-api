@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 
-import { findSession } from "../repositories/userRepository.js";
+import { findSession } from "../repositories/sessionRepository.js";
 import { NewSession } from "../protocols/Session.js";
 
 async function tokenValidate(req: Request, res: Response, next: NextFunction) {
