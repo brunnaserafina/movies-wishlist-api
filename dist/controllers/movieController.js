@@ -98,7 +98,7 @@ function numberOfMoviesByGenre(req, res) {
             switch (_a.label) {
                 case 0:
                     user_id = Number(res.locals.idUser);
-                    genre_id = Number(req.query.genre);
+                    genre_id = Number(req.params.id);
                     _a.label = 1;
                 case 1:
                     _a.trys.push([1, 3, , 4]);
