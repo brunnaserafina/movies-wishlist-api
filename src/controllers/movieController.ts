@@ -21,4 +21,25 @@ async function deleteMovie(req: Request, res: Response) {
   }
 }
 
-export { deleteMovie };
+async function updateStatusMovie(req: Request, res: Response) {
+  const id: number = Number(req.params.id);
+
+  try {
+    const editedStatusMovie: number = await movieRepository.updateStatusMovie(
+      id
+    );
+
+    if (editedStatusMovie === 0) {
+      return res
+        .status(400)
+        .send({ message: "Não foi possível editar o status!" });
+    }
+
+    return res.sendStatus(200);
+  } catch (err) {
+    console.error(err);
+    return res.sendStatus(500);
+  }
+}
+
+export { deleteMovie, updateStatusMovie };

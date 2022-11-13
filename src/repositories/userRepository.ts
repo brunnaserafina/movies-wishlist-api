@@ -25,6 +25,4 @@ async function insertUser({
   ).rowCount;
 }
 
-
-
 export { findUser, insertUser };

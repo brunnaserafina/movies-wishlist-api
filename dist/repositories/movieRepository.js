@@ -46,4 +46,14 @@ function deleteMovie(id) {
         });
     });
 }
-export { deleteMovie };
+function updateStatusMovie(id) {
+    return __awaiter(this, void 0, void 0, function () {
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, connection.query("UPDATE movies SET status_id=2 WHERE id=$1;", [id])];
+                case 1: return [2 /*return*/, (_a.sent()).rowCount];
+            }
+        });
+    });
+}
+export { deleteMovie, updateStatusMovie };
