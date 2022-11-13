@@ -56,4 +56,15 @@ function updateStatusMovie(id) {
         });
     });
 }
-export { deleteMovie, updateStatusMovie };
+function numberOfMoviesByGenre(user_id, genre_id) {
+    var _a;
+    return __awaiter(this, void 0, void 0, function () {
+        return __generator(this, function (_b) {
+            switch (_b.label) {
+                case 0: return [4 /*yield*/, connection.query("\n    SELECT COUNT(genre_id)\n      FROM movies\n    WHERE user_id=$1 AND genre_id=$2;\n  ", [user_id, genre_id])];
+                case 1: return [2 /*return*/, (_a = (_b.sent())) === null || _a === void 0 ? void 0 : _a.rows[0]];
+            }
+        });
+    });
+}
+export { deleteMovie, updateStatusMovie, numberOfMoviesByGenre };

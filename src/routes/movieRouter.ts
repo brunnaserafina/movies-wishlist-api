@@ -7,5 +7,6 @@ const movieRouter = Router();
 
 movieRouter.delete("/movie/:id", tokenValidate, movieController.deleteMovie);
 movieRouter.put("/movie/:id", tokenValidate, movieController.updateStatusMovie);
+movieRouter.get("/movie/genre/:id", tokenValidate, movieController.numberOfMoviesByGenre);
 
 export { movieRouter };

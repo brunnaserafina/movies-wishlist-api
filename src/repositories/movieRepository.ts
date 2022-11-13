@@ -12,4 +12,20 @@ async function updateStatusMovie(id: number): Promise<number> {
   ).rowCount;
 }
 
-export { deleteMovie, updateStatusMovie };
+async function numberOfMoviesByGenre(
+  user_id: number,
+  genre_id: number
+): Promise<number> {
+  return (
+    await connection.query(
+      `
+    SELECT COUNT(genre_id)
+      FROM movies
+    WHERE user_id=$1 AND genre_id=$2;
+  `,
+      [user_id, genre_id]
+    )
+  )?.rows[0];
+}
+
+export { deleteMovie, updateStatusMovie, numberOfMoviesByGenre };
